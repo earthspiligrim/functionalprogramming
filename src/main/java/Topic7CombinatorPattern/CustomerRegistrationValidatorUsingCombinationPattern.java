@@ -27,7 +27,7 @@ public interface CustomerRegistrationValidatorUsingCombinationPattern
                 ;
     }
 
-    default CustomerRegistrationValidatorUsingCombinationPattern and (CustomerRegistrationValidatorUsingCombinationPattern other) {
+    default CustomerRegistrationValidatorUsingCombinationPattern multipleValitions(CustomerRegistrationValidatorUsingCombinationPattern other) {
         return customer -> {
             ValidationResult result = this.apply(customer);
             return result.equals(ValidationResult.SUCCESS) ? other.apply(customer) : result;

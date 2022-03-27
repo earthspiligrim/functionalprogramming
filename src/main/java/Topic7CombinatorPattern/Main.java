@@ -1,6 +1,7 @@
 package Topic7CombinatorPattern;
 
 import java.time.LocalDate;
+import Topic7CombinatorPattern.CustomerRegistrationValidatorUsingCombinationPattern.ValidationResult;
 
 public class Main {
 
@@ -17,7 +18,13 @@ public class Main {
         Combinator Pattern: is a design pattern which can take functions as arguments and
         returns new functions.
          */
-
-
+        //now using CombinatorPattern
+        ValidationResult result = CustomerRegistrationValidatorUsingCombinationPattern
+                .isEmailValid()
+                .multipleValitions(CustomerRegistrationValidatorUsingCombinationPattern.isPhoneValid())
+                .multipleValitions(CustomerRegistrationValidatorUsingCombinationPattern.isAdult())
+                .apply(customer);
+        System.out.println(result);
+        if(result != ValidationResult.SUCCESS) throw new IllegalStateException(result.name());
     }
 }
